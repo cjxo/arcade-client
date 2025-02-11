@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "rimouski";
+  src: url("../assets/fonts/rimouski/Rimouski Regular.ttf");
+}
+
+@font-face {
+  font-family: "exo2";
+  src: url("../assets/fonts/Exo_2/Exo2-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "exo2it";
+  src: url("../assets/fonts/Exo_2/Exo2-Italic-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "motion-control";
+  src: url("../assets/fonts/motion-control/MotionControl-Bold.otf");
+}
+
+:root {
+  font-family: "exo2";
+  line-height: 1.5;
+  font-weight: 400;
+
+  background-color: var(--green-colour0);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --green-colour0: #9dc968;
+}
+
+/* https://stackoverflow.com/questions/14068103/disable-antialising-when-scaling-images */
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  display: block;
+  color: black;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  padding: 0px;
+  margin: 0px;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
