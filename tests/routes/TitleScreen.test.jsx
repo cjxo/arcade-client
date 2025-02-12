@@ -27,4 +27,18 @@ describe("TitleScreen", () => {
     expect(selectGame).toBeInTheDocument();
     expect(options).toBeInTheDocument();
   });
+
+  it("renders tips", () => {
+    render(
+      <BrowserRouter>
+        <TitleScreen />
+      </BrowserRouter>
+    );
+    
+    const navigate = screen.getByText("Navigate");
+    const select = screen.getByText("Select");
+
+    expect(navigate).toBeInTheDocument();
+    expect(select).toBeInTheDocument();
+  });
 });

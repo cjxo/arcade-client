@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 const PixelArtCanvas = ({ imageSrc, alt, scaleX=2, scaleY=2 }) => {

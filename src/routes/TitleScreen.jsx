@@ -1,11 +1,22 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import styles from "../styles/route.module.css";
 import PixelArtCanvas from "../components/PixelArtCanvas";
 
 const TitleScreen = () => {
-  const options = ["Select Game", "Options"];
+  const options = [
+    {
+      option: "Select Game",
+      url: "/select-game"
+    },
+    {
+      option: "Options",
+      url: "/options"
+    }
+  ];
+
+  const navigate = useNavigate();
   const [optionIdx, setOptionIdx] = useState(0);
 
   useEffect(() => {
@@ -14,7 +25,6 @@ const TitleScreen = () => {
         case "ArrowDown": {
           setOptionIdx((prevIdx) => {
             const newIdx = (prevIdx + 1) >= options.length ? 0 : prevIdx + 1;
-            console.log("HOO", newIdx);
             return newIdx;
           });
         } break;
@@ -22,24 +32,27 @@ const TitleScreen = () => {
         case "ArrowUp": {
           setOptionIdx((prevIdx) => {
             const newIdx = (prevIdx - 1) < 0 ? options.length - 1 : prevIdx - 1;
-            console.log("HELLO", newIdx);
             return newIdx;
           });
+        } break;
+
+        case "Enter": {
+          navigate(options[optionIdx].url);
         } break;
       }
     };
 
     document.addEventListener("keydown", keyListen);
     return () => document.removeEventListener("keydown", keyListen);
-  }, []);
+  }, [optionIdx, navigate]);
 
   return (
     <main className={styles.titleScreen}>
       <div className={styles.center}>
         <h1>Arcade Games</h1>
         <ul className={styles.options}>
-          {options.map((option, idx) => (
-            <li key={option}><Link className={(idx === optionIdx) ? styles.selected : ""}>{option}</Link></li>
+          {options.map(({ option, url }, idx) => (
+            <li key={option}><Link to={url} className={(idx === optionIdx) ? styles.selected : ""}>{option}</Link></li>
           ))}
         </ul>
       </div>
